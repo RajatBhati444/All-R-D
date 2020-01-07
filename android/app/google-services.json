@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "704872190222",
+    "firebase_url": "https://flotar-dummy.firebaseio.com",
+    "project_id": "flotar-dummy",
+    "storage_bucket": "flotar-dummy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704872190222:android:8dae7206f9d8a5e805475f",
+        "android_client_info": {
+          "package_name": "com.flotardummy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704872190222-0nag4p42v99tas4r506t1vuplj1m9lnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIwKjEi7_Ig2FRGvsdvxVYVCAEbL4FIqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704872190222-0nag4p42v99tas4r506t1vuplj1m9lnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
