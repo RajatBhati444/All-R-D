@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import {NavigationProp} from 'react-navigation';
 import {useScaling} from '../../Hooks';
-import {iid} from 'react-native-firebase';
+// import {iid} from 'react-native-firebase';
+import {BlurView, VibrancyView} from '@react-native-community/blur';
 
 type PropType = {
   navigation: NavigationProp<any>;
@@ -145,6 +146,13 @@ function useDeckSwiper({navigation}: PropType) {
                 />
               </View>
               <View style={{flex: 3, marginTop: 20}}>
+                {/* <BlurView
+                  style={{height: 100, width: 100}}
+                  blurType="regular"
+                  blurAmount={25}
+                  blurRadius={25}
+                  viewRef={null}
+                /> */}
                 <Text>
                   OSX via react-native-desktop Browse to
                   node_modules/react-native-vector-icons and drag the folder

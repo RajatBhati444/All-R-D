@@ -7,14 +7,26 @@ import {
   StyleSheet,
   Clipboard,
   PanResponder,
+  ImageBackground,
 } from 'react-native';
 //@ts-ignore
 import AppIntro from 'react-native-app-intro';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
 
 function Screen1({navigation}: any) {
   const [cord, setCord] = useState({height: 79, width: 90});
+
+  useEffect(() => {
+    let date = new Date().getDate();
+    let month = new Date().getMonth();
+    let year = new Date().getFullYear();
+    const addYear = `${date}-${month}`;
+    console.log('addYear', addYear);
+    const ret = addYear.replace(/-/g, '');
+    console.log('return', ret);
+  });
 
   const penrespo = () => {
     const _panResponder = PanResponder.create({
@@ -53,7 +65,7 @@ function Screen1({navigation}: any) {
 
     return (
       <View
-        style={{height: 100, width: 100, backgroundColor: 'green'}}
+        style={{height: 100, width: 100, backgroundColor: '#FF5673'}}
         {..._panResponder.panHandlers}
       />
     );
@@ -131,6 +143,40 @@ function Screen1({navigation}: any) {
     },
   ];
 
+  const circleArray = [
+    {
+      text: '1',
+      color: 'grey',
+      uri:
+        'https://images.pexels.com/photos/3473492/pexels-photo-3473492.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+    {
+      text: '2',
+      color: 'red',
+      uri:
+        'https://images.pexels.com/photos/3467150/pexels-photo-3467150.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+    {
+      text: '3',
+      color: 'yellow',
+      uri:
+        'https://images.pexels.com/photos/3431494/pexels-photo-3431494.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+    {
+      text: '4',
+      color: 'blue',
+      uri:
+        'https://images.pexels.com/photos/3522094/pexels-photo-3522094.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+    {
+      text: '+',
+      color: 'green',
+      uri:
+        'https://images.pexels.com/photos/3433004/pexels-photo-3433004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      blur: true,
+    },
+  ];
+
   useEffect(() => {
     Clipboard.getString();
   }, []);
@@ -155,20 +201,57 @@ function Screen1({navigation}: any) {
     // />
     <View
       style={{
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
       {penrespo()}
       <Button title={'Navigate'} onPress={() => buttonClick()} />
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}
+        colors={['#423BFA', '#5495D2', '#29D7F7']}
+        style={{height: 100, width: 200, opacity: 0.9}}>
+        <Image
+          style={{flex: 1, opacity: 0.2}}
+          source={{
+            uri:
+              'https://images.pexels.com/photos/3431494/pexels-photo-3431494.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          }}
+        />
+      </LinearGradient>
       <Text
         suppressHighlighting={true}
         selectionColor={'white'}
         selectable={true}>
-        hey therer hey therer hey therer hey therer hey therer
+        hey therer hey therer hey therer hey there
       </Text>
       <Icon size={100} name="ios-more" />
+      <View style={{flexDirection: 'row'}}>
+        {circleArray.map(item => {
+          return (
+            <ImageBackground
+              blurRadius={item.blur ? 5 : 0}
+              style={{
+                height: 80,
+                width: 80,
+                borderRadius: 60,
+                backgroundColor: item.color,
+                overflow: 'hidden',
+                justifyContent: 'center',
+                marginLeft: -30,
+                alignItems: 'center',
+              }}
+              source={{uri: item.uri}}>
+              <Text
+                style={{color: 'white', fontSize: item.text == '+' ? 50 : 30}}>
+                {item.text}
+              </Text>
+            </ImageBackground>
+          );
+        })}
+      </View>
     </View>
   );
 }

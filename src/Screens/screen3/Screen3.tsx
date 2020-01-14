@@ -27,6 +27,8 @@ function Screen3({navigation}: any) {
     WEBVIEW_REF.reload();
   };
 
+  const INJECTEDJAVASCRIPT = `const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `;
+
   return (
     <View
       style={{
@@ -35,14 +37,19 @@ function Screen3({navigation}: any) {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <View style={{flex: 8}}>
+      <View pointerEvents={'auto'} style={{flex: 8}}>
         <WebView
           ref={(webView: any) => {
             WEBVIEW_REF = webView;
           }}
           // onNavigationStateChange={onNavigationStateChange}
           style={{width: getFullWidth()}}
-          source={{uri: 'https://www.google.com/'}}
+          source={{uri: 'http://www.google.com/'}}
+          scrollEnabled={true}
+          injectedJavaScript={INJECTEDJAVASCRIPT}
+          scalesPageToFit={true}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
         />
       </View>
       {/* <Text>Screen 3</Text> */}
