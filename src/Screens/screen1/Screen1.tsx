@@ -8,6 +8,9 @@ import {
   Clipboard,
   PanResponder,
   ImageBackground,
+  Slider,
+  Alert,
+  NativeModules,
 } from 'react-native';
 //@ts-ignore
 import AppIntro from 'react-native-app-intro';
@@ -17,6 +20,10 @@ import LinearGradient from 'react-native-linear-gradient';
 
 function Screen1({navigation}: any) {
   const [cord, setCord] = useState({height: 79, width: 90});
+
+  useEffect(() => {
+    // const ShortcutBadger = NativeModules.;
+  }, []);
 
   useEffect(() => {
     let date = new Date().getDate();
@@ -221,34 +228,77 @@ function Screen1({navigation}: any) {
           }}
         />
       </LinearGradient>
+      <View
+        style={{
+          height: 100,
+          width: 100,
+          overflow: 'hidden',
+          justifyContent: 'center',
+          alignContent: 'center',
+        }}></View>
       <Text
         suppressHighlighting={true}
         selectionColor={'white'}
         selectable={true}>
         hey therer hey therer hey therer hey there
       </Text>
+      <Slider
+        // step={10}
+        collapsable={true}
+        style={{width: 100, height: 30}}
+        value={10}
+        // onResponderEnd={() => Alert.alert('hy')}
+      />
       <Icon size={100} name="ios-more" />
       <View style={{flexDirection: 'row'}}>
         {circleArray.map(item => {
           return (
-            <ImageBackground
-              blurRadius={item.blur ? 5 : 0}
+            <View
               style={{
-                height: 80,
-                width: 80,
+                height: 90,
+                width: 90,
                 borderRadius: 60,
-                backgroundColor: item.color,
-                overflow: 'hidden',
+                backgroundColor: 'transparent',
+                overflow: 'visible',
                 justifyContent: 'center',
-                marginLeft: -30,
+
+                marginLeft: -33,
                 alignItems: 'center',
-              }}
-              source={{uri: item.uri}}>
+                // borderColor: 'transparent',
+                // borderWidth: 5,
+                position: 'relative',
+                backfaceVisibility: 'hidden',
+                zIndex: circleArray.length - 1,
+              }}>
+              <Image
+                blurRadius={item.blur ? 5 : 0}
+                style={{
+                  height: 80,
+                  width: 80,
+                  borderRadius: 60,
+                  // backgroundColor: item.color,
+                  overflow: 'hidden',
+                  justifyContent: 'center',
+                  marginLeft: -30,
+                  alignItems: 'center',
+                  borderColor: 'grey',
+                  // borderWidth: 5,
+                  position: 'absolute',
+                  backfaceVisibility: 'hidden',
+                  zIndex: 1,
+                }}
+                source={{uri: item.uri}}
+              />
+
               <Text
-                style={{color: 'white', fontSize: item.text == '+' ? 50 : 30}}>
+                style={{
+                  color: 'white',
+                  fontSize: item.text == '+' ? 50 : 30,
+                  zIndex: 1,
+                }}>
                 {item.text}
               </Text>
-            </ImageBackground>
+            </View>
           );
         })}
       </View>

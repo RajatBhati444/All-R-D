@@ -11,6 +11,7 @@ import AppHeader from '../Components/Shared/AppHeader';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {View, Text} from 'react-native';
 import DeckSwiper from '../Screens/deckSwiper/DeckSwiper';
+import Screen7 from '../Screens/screen7/Screen7';
 
 Icon.loadFont();
 const AppStackNavigator = createStackNavigator(
@@ -66,6 +67,13 @@ const AppStackNavigator = createStackNavigator(
       navigationOptions: {
         header: AppHeader,
         headerTitle: 'DeckSwiper',
+      },
+    },
+    screen7: {
+      screen: Screen7,
+      navigationOptions: {
+        header: AppHeader,
+        headerTitle: 'Screen 7',
       },
     },
   },

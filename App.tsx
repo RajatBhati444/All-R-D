@@ -5,9 +5,11 @@ import NavigationService from './src/Navigations/NavigationService';
 import {ThemeProvider} from './UIKIT/lib';
 import firebase from 'react-native-firebase';
 import {BackHandler, Alert} from 'react-native';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 // import analytics from '@react-native-firebase/analytics';
 // import SplashScreen from 'react-native-splash-screen';
 import 'react-native-gesture-handler';
+import {getUniqueId, getManufacturer} from 'react-native-device-info';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/Ionicons';
 Icon.loadFont();
@@ -20,6 +22,14 @@ function App() {
     Alert.alert('hy');
     // BackHandler.exitApp();
   };
+
+  useEffect(() => {
+    // PushNotificationIOS.setApplicationIconBadgeNumber(10);
+    // <PushNotificationIOS />;
+    // PushNotificationIOS.setApplicationIconBadgeNumber(10);
+    const id = getUniqueId();
+    console.log('unique id', id);
+  }, []);
 
   useEffect(() => {
     // BackHandler.addEventListener('hardwareBackPress', handleBackPress);

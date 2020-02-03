@@ -27,7 +27,7 @@ function Screen3({navigation}: any) {
     WEBVIEW_REF.reload();
   };
 
-  const INJECTEDJAVASCRIPT = `const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `;
+  const INJECTEDJAVASCRIPT = `const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `;
 
   return (
     <View
@@ -44,7 +44,8 @@ function Screen3({navigation}: any) {
           }}
           // onNavigationStateChange={onNavigationStateChange}
           style={{width: getFullWidth()}}
-          source={{uri: 'http://www.google.com/'}}
+          // source={{uri: 'http://www.google.com/'}}
+          source={{uri: 'http://mycrm.bizofficer.com/'}}
           scrollEnabled={true}
           injectedJavaScript={INJECTEDJAVASCRIPT}
           scalesPageToFit={true}
